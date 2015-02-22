@@ -42,10 +42,14 @@ function showProgress(/*fruitsAmount, fruitsReq, vegetablesAmount, vegetablesReq
 
 function drawAndFillCircle(amount, requirement, x, y, color, label)
 {
-    var percentage = amount / requirement;
-    var percentageAngle = percentage * 2 * Math.PI;
+    var fraction = amount / requirement;
+    if (fraction > 1)
+    {
+        fraction = 1;
+    }
+    var fractionAngle = fraction * 2 * Math.PI;
     canvas2D.beginPath();
-    canvas2D.arc(x, y, radius, 0, percentageAngle, false);
+    canvas2D.arc(x, y, radius, 0, fractionAngle, false);
     canvas2D.lineTo(x, y);
     canvas2D.closePath();
     canvas2D.fillStyle = color;
